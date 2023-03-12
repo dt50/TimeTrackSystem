@@ -15,7 +15,7 @@ class User(AbstractUser):
         BOSS = 1, "Начальство"
         EMPLOYEE = 2, "Сотрудник"
 
-    id_user = models.IntegerField("ID пользователя", null=True, blank=True)
+    id_user = models.IntegerField("ID пользователя в системе", null=True, blank=True)
     middle_name = models.CharField("Отчество", max_length=150, null=True, blank=True)
     birthday = models.DateField(null=True, blank=True)
     gender = models.CharField(max_length=10, null=True, choices=Gender.choices)
@@ -26,7 +26,7 @@ class User(AbstractUser):
         choices=Dismissed.choices,
         default=Dismissed.NOTDISMISSED,
     )
-    admin = models.BooleanField("Администратор", null=True, blank=True)
+    admin = models.BooleanField("Администратор", null=True, blank=True, default=False)
     boss = models.IntegerField(
         "Статус начальства",
         null=True,
